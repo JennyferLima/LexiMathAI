@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LexiMath IA</title>
+
+    <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+
+    <!-- ======================================== -->
+    <!-- HOME -->
+    <!-- ======================================== -->
+
+    <section id="home" class="page active home-page">
+
+        <div class="home-brand">
+            <h1>
+                <span class="logo-main-home">Lexi</span><span class="logo-green-home">Math</span>
+                <span class="logo-badge-home">IA</span>
+            </h1>
+
+            <p>
+                Sistema Adaptativo para Letramento e<br>
+                Interpretação de Problemas Matemáticos
+            </p>
+        </div>
+
+        <div class="home-shell">
+
+            <div class="home-left">
+                <h2>
+                    De “o aluno errou”<br>
+                    para “qual dificuldade<br>
+                    levou ao erro”.
+                </h2>
+
+                <p class="home-description">
+                    Apoio inteligente para compreender o raciocínio do aluno,
+                    identificar dificuldades interpretativas e orientar intervenções
+                    pedagógicas mais eficazes.
+                </p>
+            </div>
+
+            <div class="home-illustration">
+                <img
+                    src="assets/hero-leximath.png"
+                    alt="Professora auxiliando aluno em atividade matemática"
+                    class="hero-image"
+                >
+            </div>
+
+        </div>
+
+        <div class="home-cards">
+
+            <div class="home-card">
+                <div class="card-icon">⌕</div>
+                <h3>Diagnóstico Interpretativo</h3>
+                <p>
+                    Identifica a origem da dificuldade de compreensão do enunciado
+                    com base em análise textual simulada.
+                </p>
+            </div>
+
+            <div class="home-card">
+                <div class="card-icon">⇄</div>
+                <h3>Intervenções Adaptativas</h3>
+                <p>
+                    Oferece apoios que ajudam o aluno a compreender e reorganizar o
+                    raciocínio, sem entregar a resposta.
+                </p>
+            </div>
+
+            <div class="home-card">
+                <div class="card-icon">◌</div>
+                <h3>Apoio ao Professor</h3>
+                <p>
+                    Fornece dados e sugestões pedagógicas para intervenções mais
+                    precisas e individualizadas.
+                </p>
+            </div>
+
+        </div>
+
+        <div class="home-actions">
+            <button class="primary-btn" onclick="showSection('student')">
+                Entrar como aluno
+            </button>
+
+            <button class="secondary-btn" onclick="showSection('teacher')">
+                Entrar como professor
+            </button>
+        </div>
+
+        <div class="home-note">
+            <strong>Nota metodológica</strong>
+            <p>
+                Este protótipo apresenta uma simulação funcional do fluxo metodológico proposto.
+                A análise automática é baseada em regras e dados simulados. Avaliação qualitativa exploratória.
+            </p>
+        </div>
+
+    </section>
+
+
+    <!-- ======================================== -->
+    <!-- STUDENT -->
+    <!-- ======================================== -->
+
+    <section id="student" class="page student-page">
+
+        <div class="student-shell">
+
+            <aside class="student-sidebar">
+                <div class="sidebar-logo">
+                    Lexi<span>Math</span><strong>IA</strong>
+                </div>
+
+                <ul>
+                    <li>Módulo do Aluno</li>
+                    <li class="active-menu">Novo desafio</li>
+                    <li>Histórico</li>
+                    <li>Dicas de estudo</li>
+                    <li>Meu progresso</li>
+                    <li>Sair</li>
+                </ul>
+            </aside>
+
+            <main class="student-content">
+
+                <h2>Novo Desafio</h2>
+
+                <div class="student-problem-box">
+                    <h4>Leia o problema com atenção</h4>
+                    <p>
+                        Uma escola recebeu 48 livros novos. A professora distribuiu 18 livros
+                        para uma turma e depois separou o restante igualmente em 3 caixas.
+                        Quantos livros ficaram em cada caixa?
+                    </p>
+                </div>
+
+                <div class="student-form-grid">
+
+                    <div class="student-field">
+                        <label>1. Qual é a sua resposta?</label>
+                        <small>Digite apenas o número final.</small>
+
+                        <div class="answer-wrapper">
+                            <input type="number" id="answer" value="16">
+                            <span>livros</span>
+                        </div>
+                    </div>
+
+                    <div class="student-field">
+                        <label>2. Como você pensou? <em>(opcional)</em></label>
+                        <small>Explique como chegou à sua resposta.</small>
+
+                        <textarea id="justification">Eu dividi 48 por 3 porque tinha 3 caixas.</textarea>
+                        <small>Máx. 300 caracteres</small>
+                    </div>
+
+                </div>
+
+                <button class="student-analyze-btn" onclick="analyzeAnswer()">
+                    Analisar minha resposta
+                </button>
+
+                <div class="student-tip">
+                    <strong>Dica:</strong> Você pode revisar o enunciado quantas vezes quiser antes de enviar sua resposta.
+                </div>
+
+            </main>
+
+        </div>
+
+    </section>
+
+    <!-- ======================================== -->
+    <!-- ANALYSIS -->
+    <!-- ======================================== -->
+
+    <section id="analysis" class="page analysis-page">
+
+        <div class="analysis-shell">
+
+            <aside class="student-sidebar">
+                <div class="sidebar-logo">
+                    Lexi<span>Math</span><strong>IA</strong>
+                </div>
+
+                <ul>
+                    <li>Módulo do Aluno</li>
+                    <li class="active-menu">Novo desafio</li>
+                    <li>Histórico</li>
+                    <li>Meu progresso</li>
+                    <li>Dicas de Estudo</li>
+                    <li>Sair</li>
+                </ul>
+            </aside>
+
+            <main class="analysis-content">
+
+                <div class="analysis-header">
+                    <div>
+                        <h2>Análise da sua resposta</h2>
+                        <p>Nosso sistema analisou sua resposta com base na compreensão do enunciado.</p>
+                    </div>
+
+                    <span class="analysis-tag">Análise simulada</span>
+                </div>
+
+                <div class="warning-box">
+                    <span>Possível dificuldade identificada</span>
+                    <h3 id="diagnosis-title">Interpretação incompleta do enunciado</h3>
+                </div>
+
+                <div class="analysis-grid two-columns">
+
+                    <div class="analysis-card">
+                        <h4>Evidências identificadas no enunciado</h4>
+                        <ul>
+                            <li>✅ 48 livros novos</li>
+                            <li>✅ A professora distribuiu 18 livros para uma turma</li>
+                            <li>✅ O restante foi separado igualmente em 3 caixas</li>
+                        </ul>
+                    </div>
+
+                    <div class="analysis-card">
+                        <h4>Elementos utilizados na sua resposta</h4>
+                        <ul id="used-elements">
+                            <li>✅ Usou o número 48</li>
+                            <li>✅ Usou o número 3 caixas</li>
+                        </ul>
+
+                        <h4 class="danger-title">Elemento não utilizado</h4>
+                        <ul>
+                            <li>❌ 18 livros distribuídos antes da divisão</li>
+                        </ul>
+                    </div>
+
+                </div>
+
+                <div class="diagnosis-explanation">
+                    <h4>Explicação do diagnóstico</h4>
+                    <p id="diagnosis-text">
+                        Você identificou corretamente a quantidade total (48) e o número de caixas (3),
+                        mas não considerou que 18 livros já foram distribuídos antes da divisão.
+                    </p>
+                </div>
+
+                <div class="metrics-grid">
+
+                    <div class="metric-box">
+                        <span>Tipo de erro</span>
+                        <strong id="error-type">Interpretativo textual</strong>
+                    </div>
+
+                    <div class="metric-box">
+                        <span>Confiança</span>
+                        <strong>Interpretação incompleta</strong>
+                        <div class="confidence-bar">
+                            <div></div>
+                        </div>
+                        <b>78%</b>
+                    </div>
+
+                    <div class="metric-box">
+                        <span>O que fazer agora?</span>
+                        <strong>
+                            Reflita sobre as informações que precisam ser usadas antes de realizar a divisão.
+                        </strong>
+                    </div>
+
+                </div>
+
+            </main>
+
+        </div>
+
+    </section>
+
+
+    <!-- ======================================== -->
+    <!-- TEACHER -->
+    <!-- ======================================== -->
+
+    <section id="teacher" class="page teacher-page">
+
+        <div class="teacher-shell">
+
+            <aside class="teacher-sidebar">
+                <div class="sidebar-logo">
+                    Lexi<span>Math</span><strong>IA</strong>
+                </div>
+
+                <ul>
+                    <li>Módulo do Professor</li>
+                    <li class="active-menu">Painel da turma</li>
+                    <li>Atividades</li>
+                    <li>Respostas dos alunos</li>
+                    <li>Padrões de dificuldade</li>
+                    <li>Sugestões pedagógicas</li>
+                    <li>Revisão docente</li>
+                    <li>Relatórios</li>
+                    <li>Sair</li>
+                </ul>
+            </aside>
+
+            <main class="teacher-content">
+
+                <div class="teacher-header">
+                    <h2>Painel da turma</h2>
+                    <p>Visão geral das respostas, dificuldades recorrentes e intervenções sugeridas.</p>
+                </div>
+
+                <div class="teacher-toolbar">
+                    <label>Turma
+                        <select>
+                            <option>4º Ano A</option>
+                        </select>
+                    </label>
+
+                    <label>Período
+                        <select>
+                            <option>Últimos 7 dias</option>
+                        </select>
+                    </label>
+
+                    <button>Filtrar</button>
+                </div>
+
+                <div class="teacher-metrics">
+                    <div class="stat-card blue"><span>24</span><p>Respostas analisadas</p></div>
+                    <div class="stat-card red"><span>58%</span><p>Erros interpretativos</p></div>
+                    <div class="stat-card orange"><span>25%</span><p>Erros procedimentais</p></div>
+                    <div class="stat-card green"><span>17%</span><p>Respostas adequadas</p></div>
+                </div>
+
+                <div class="teacher-insights">
+
+                    <div class="teacher-card chart-card">
+
+                        <h3>Categorias de dificuldade mais frequentes</h3>
+
+                        <div class="chart-content">
+                            <div class="fake-chart">
+                                <div></div>
+                            </div>
+
+                            <ul>
+                                <li><span class="legend red"></span> Interpretação incompleta <strong>42%</strong></li>
+                                <li><span class="legend orange"></span> Relação entre dados <strong>21%</strong></li>
+                                <li><span class="legend blue"></span> Localização de informação <strong>17%</strong></li>
+                                <li><span class="legend purple"></span> Vocabulário matemático <strong>8%</strong></li>
+                                <li><span class="legend green"></span> Erro procedimental <strong>12%</strong></li>
+                            </ul>
+                        </div>
+
+                    </div>
+
+                    <div class="teacher-card">
+                        <h3>Padrões recorrentes da turma</h3>
+                        <p>
+                            Maior dificuldade em considerar informações que precisam ser usadas
+                            antes da operação final. Confusão entre divisão direta e divisão após
+                            retirada de parte do total.
+                        </p>
+                    </div>
+
+                </div>
+
+                <div class="teacher-table-card">
+                    <h3>Últimas respostas analisadas</h3>
+
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Aluno</th>
+                                <th>Resposta</th>
+                                <th>Categoria</th>
+                                <th>Tipo de erro</th>
+                                <th>Intervenção sugerida</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr>
+                                <td>Ana Souza</td>
+                                <td>16</td>
+                                <td>Interpretação incompleta</td>
+                                <td>Interpretativo</td>
+                                <td>Reorganizar dados antes do cálculo</td>
+                                <td><span class="status pending">Pendente</span></td>
+                            </tr>
+
+                            <tr>
+                                <td>Lucas Lima</td>
+                                <td>30</td>
+                                <td>Relação entre dados</td>
+                                <td>Interpretativo</td>
+                                <td>Pergunta intermediária</td>
+                                <td><span class="status pending">Pendente</span></td>
+                            </tr>
+
+                            <tr>
+                                <td>Maria Silva</td>
+                                <td>10</td>
+                                <td>Resposta adequada</td>
+                                <td>Adequado</td>
+                                <td>Avançar</td>
+                                <td><span class="status valid">Validado</span></td>
+                            </tr>
+
+                            <tr>
+                                <td>João Pedro</td>
+                                <td>6</td>
+                                <td>Erro procedimental</td>
+                                <td>Matemático</td>
+                                <td>Revisar operação de divisão</td>
+                                <td><span class="status pending">Pendente</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </main>
+
+        </div>
+
+    </section>
+
+
+    <!-- ======================================== -->
+    <!-- REVIEW -->
+    <!-- ======================================== -->
+
+    <section id="review" class="page">
+
+        <div class="review-card">
+
+            <h2>Revisão docente</h2>
+
+            <div class="review-grid">
+
+                <div>
+                    <h4>Diagnóstico automático</h4>
+
+                    <p>
+                        Categoria sugerida:
+                        <strong>Interpretação incompleta</strong>
+                    </p>
+
+                    <p>
+                        Tipo de erro:
+                        <strong>Interpretativo textual</strong>
+                    </p>
+                </div>
+
+                <div>
+                    <h4>Revisão do professor</h4>
+
+                    <label>Validar diagnóstico?</label>
+
+                    <select>
+                        <option>Validar</option>
+                        <option>Não validar</option>
+                    </select>
+
+                    <label>Observação docente</label>
+
+                    <textarea>
+                        O aluno precisa reorganizar as informações antes da operação.
+                    </textarea>
+
+                    <button class="primary-btn" onclick="saveReview()">
+                        Salvar revisão
+                    </button>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    
+    <!-- ======================================== -->
+    <!-- FOOTER -->
+    <!-- ======================================== -->
+<!-- 
+    <footer>
+
+        <div class="taxonomy-section">
+
+            <h3>Taxonomia de erros</h3>
+
+            <div class="taxonomy-grid">
+
+                <div class="taxonomy-card">
+                    <h4>Localização de informação</h4>
+                    <p>Ignora informações importantes do enunciado.</p>
+                </div>
+
+                <div class="taxonomy-card">
+                    <h4>Vocabulário matemático</h4>
+                    <p>Confunde termos matemáticos.</p>
+                </div>
+
+                <div class="taxonomy-card">
+                    <h4>Interpretação incompleta</h4>
+                    <p>Considera apenas parte do problema.</p>
+                </div>
+
+                <div class="taxonomy-card">
+                    <h4>Erro procedimental</h4>
+                    <p>Compreende o problema, mas erra a operação.</p>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="methodology-section">
+            <h3>Rigor metodológico do protótipo</h3>
+
+            <ul>
+                <li>Baseado em Revisão Sistemática da Literatura</li>
+                <li>Análise automática simulada por regras</li>
+                <li>Avaliação qualitativa exploratória</li>
+                <li>Fluxo conceitual validável por professores</li>
+            </ul>
+        </div>
+
+
+        <div class="important-box">
+            <strong>
+                A IA apoia o professor, mas não o substitui.
+            </strong>
+        </div>
+
+    </footer>
+
+-->
+
+
+    <script src="script.js"></script>
+</body>
+</html>
+
